@@ -18,13 +18,13 @@ class DoomClockWidget extends WP_Widget {
 	}
 	
 	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array('title' => '', 'date' => '', 'time' => '', 'timezone' => '', 'bordercolor' => ''));
+		$instance = wp_parse_args( (array) $instance, array('title' => '', 'date' => '', 'time' => '', 'timezone' => ''));
 		
 		$title = $instance['title'];
 		$date = $instance['date'];
 		$time = $instance['time'];
 		$timezone = $instance['timezone'];
-		$bordercolor = $instance['bordercolor'];
+		
 		?>
 		
 		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
@@ -34,7 +34,6 @@ class DoomClockWidget extends WP_Widget {
 		<select class="widefat" id="<?php echo $this->get_field_id('timezone'); ?>" name="<?php echo $this->get_field_name('timezone'); ?>">
 			<?php echo wp_timezone_choice($timezone); ?>
 		</select></p>
-		<p><label for="<?php echo $this->get_field_id('bordercolor'); ?>">Border Color: <input class="widefat" id="<?php echo $this->get_field_id('bordercolor'); ?>" name="<?php echo $this->get_field_name('bordercolor'); ?>" type="text" value="<?php echo attribute_escape($bordercolor); ?>" /></label></p>
 		
 		<?php
 	}
@@ -46,7 +45,6 @@ class DoomClockWidget extends WP_Widget {
 		$instance['date'] = $new_instance['date'];
 		$instance['time'] = $new_instance['time'];
 		$instance['timezone'] = $new_instance['timezone'];
-		$instance['bordercolor'] = $new_instance['bordercolor'];
 		
 		return $instance;
 	}
@@ -68,7 +66,7 @@ class DoomClockWidget extends WP_Widget {
 				$title,
 			$after_title,
 			
-			"<time style='border: 2px solid {$bordercolor};' datetime='{$datetime}'></time>",
+			"<time datetime='{$datetime}'></time>",
 		$after_widget;
 		
 		wp_enqueue_script('jquery.doomclock', plugins_url('jquery.doomclock.js', __FILE__));

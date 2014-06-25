@@ -1,0 +1,3 @@
+$(function() {
+	$('.DoomClockWidget time').doomclock();
+});

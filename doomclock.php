@@ -54,8 +54,11 @@ class DoomClockWidget extends WP_Widget {
 				$title,
 			$after_title,
 			
-			"<time datetime='{$datetime}'></time>",	
+			"<time datetime='{$datetime}'></time>",
 		$after_widget;
+		
+		wp_enqueue_script('jquery.doomclock', plugins_url('jquery.doomclock.js', __FILE__));
+		wp_enqueue_script('doomclock-invoke', plugins_url('doomclock-invoke.js', __FILE__));
 	}
 }
 

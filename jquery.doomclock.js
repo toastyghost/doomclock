@@ -48,7 +48,7 @@ $.fn.doomclock = function() {
 					seconds.innerHTML = ('0' + seconds.innerHTML).slice(-2);
 				}
 			}
-		}, 1000);
+		}, 10);
 	} else {
 		throw "jQuery.doomclock: Invalid tagName. You must invoke doomclock on a <time> element.";
 	}

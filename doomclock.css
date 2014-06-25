@@ -11,4 +11,5 @@
 #doomclock-minutes,
 #doomclock-seconds {
 	font-size: 18px;
+	line-height: 1.65em;
 }

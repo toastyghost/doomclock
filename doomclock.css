@@ -1,3 +1,13 @@
+.DoomClockWidget {
+	width: 65%;
+	padding: 15px;
+	border: 2px solid #d63131;
+}
+
+.DoomClockWidget h4 {
+	margin: 0 0 8px;
+}
+
 .DoomClockWidget time {
 	display: block;
 	margin-left: 10px;
@@ -5,6 +15,10 @@
 
 #doomclock-days {
 	font-size: 28px;
+}
+
+#doomclock-hours {
+	margin-left: 4px;
 }
 
 #doomclock-hours,

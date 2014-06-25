@@ -46,8 +46,16 @@ class DoomClockWidget extends WP_Widget {
 		extract($args, EXTR_SKIP);
 		
 		$title = empty($instance['title']) ? ' ' : apply_filters('widget_title', $instance['title']);
+		$datetime = $instance['date'] . 'T' . $instance['time'] . ':00';
 		
-		echo $before_widget, $before_title, $title, $after_title, $after_widget;
+		echo
+		$before_widget,
+			$before_title,
+				$title,
+			$after_title,
+			
+			"<time datetime='{$datetime}'></time>",	
+		$after_widget;
 	}
 }
 

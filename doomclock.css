@@ -1,7 +1,7 @@
 .DoomClockWidget {
 	width: 65%;
 	padding: 15px;
-	border: 2px solid #d63131;
+	border: 2px solid;
 }
 
 .DoomClockWidget h4 {

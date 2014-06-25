@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Doom Clock
+Plugin Name: DoomClock
 Description: Customizable countdown timer sidebar widget based on jQuery plugin of the same name
 Author: Josh Clark
 Version: 1
@@ -38,6 +38,14 @@ class DoomClockWidget extends WP_Widget {
 	}
 	
 	function widget($args, $instance) {
+		extract($args, EXTR_SKIP);
 		
+		echo '<pre>';
+		print_r($instance);
+		echo '</pre>';
 	}
 }
+
+add_action('widgets_init', create_function('', 'return register_widget("DoomClockWidget");'));
+
+?>

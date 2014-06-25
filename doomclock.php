@@ -52,15 +52,12 @@ class DoomClockWidget extends WP_Widget {
 		extract($args, EXTR_SKIP);
 		
 		$title = empty($instance['title']) ? ' ' : apply_filters('widget_title', $instance['title']);
-		$datetime = $instance['date'] . 'T' . $instance['time'] . ':00';
-		$timezone = $instance['timezone'];
 		
+		$timezone = $instance['timezone'];
 		$time = new \DateTime('now', new DateTimeZone($timezone));
 		$timezone_offset = $time->format('P');
 		
-		echo '<pre>';
-		print_r($timezone_offset);
-		echo '</pre>';
+		$datetime = date('Y-m-d\TH:i:s', strtotime($instance['date'] . 'T' . $instance['time'] . ':00') - (integer) $timezone_offset * 3600);
 		
 		echo
 		$before_widget,

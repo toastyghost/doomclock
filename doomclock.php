@@ -34,8 +34,10 @@ class DoomClockWidget extends WP_Widget {
 	
 	function update($new_instance, $old_instance) {
 		$instance = $old_instance;
+		
 		$instance['title'] = $new_instance['title'];
 		$instance['date'] = $new_instance['date'];
+		$instance['time'] = $new_instance['time'];
 		
 		return $instance;
 	}

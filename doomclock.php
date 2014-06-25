@@ -45,13 +45,7 @@ class DoomClockWidget extends WP_Widget {
 	function widget($args, $instance) {
 		extract($args, EXTR_SKIP);
 		
-		echo $before_widget;
-		
-		echo '<pre>';
-		print_r($instance);
-		echo '</pre>';
-		
-		echo $after_widget;
+		echo $before_widget, '<h4>', $instance['title'], '</h4>', $after_widget;
 	}
 }
 

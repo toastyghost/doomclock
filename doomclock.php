@@ -18,13 +18,16 @@ class DoomClockWidget extends WP_Widget {
 	}
 	
 	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array('title' => '', 'date' => ''));
+		$instance = wp_parse_args( (array) $instance, array('title' => '', 'date' => '', 'time' => ''));
+		
 		$title = $instance['title'];
 		$date = $instance['date'];
+		$time = $instance['time'];
 		?>
 		
 		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
-		<p><label for="<?php echo $this->get_field_id('date'); ?>">Date: <input class="widefat" id="<?php echo $this->get_field_id('date'); ?>" name="<?php echo $this->get_field_name('date'); ?>" type="datetime" value="<?php echo attribute_escape($date); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('date'); ?>">Date: <input class="widefat" id="<?php echo $this->get_field_id('date'); ?>" name="<?php echo $this->get_field_name('date'); ?>" type="date" value="<?php echo attribute_escape($date); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('time'); ?>">Time: <input class="widefat" id="<?php echo $this->get_field_id('time'); ?>" name="<?php echo $this->get_field_name('time'); ?>" type="time" value="<?php echo attribute_escape($time); ?>" /></label></p>
 		
 		<?php
 	}

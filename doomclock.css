@@ -1,0 +1,14 @@
+.DoomClockWidget time {
+	display: block;
+	margin-left: 10px;
+}
+
+#doomclock-days {
+	font-size: 28px;
+}
+
+#doomclock-hours,
+#doomclock-minutes,
+#doomclock-seconds {
+	font-size: 18px;
+}

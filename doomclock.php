@@ -59,6 +59,7 @@ class DoomClockWidget extends WP_Widget {
 		
 		wp_enqueue_script('jquery.doomclock', plugins_url('jquery.doomclock.js', __FILE__));
 		wp_enqueue_script('doomclock-invoke', plugins_url('doomclock-invoke.js', __FILE__));
+		wp_enqueue_style('doomclock', plugins_url('doomclock.css', __FILE__));
 	}
 }
 

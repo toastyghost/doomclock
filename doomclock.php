@@ -18,16 +18,21 @@ class DoomClockWidget extends WP_Widget {
 	}
 	
 	function form($instance) {
-		$instance = wp_parse_args( (array) $instance, array('title' => '', 'date' => '', 'time' => ''));
+		$instance = wp_parse_args( (array) $instance, array('title' => '', 'date' => '', 'time' => '', 'timezone' => ''));
 		
 		$title = $instance['title'];
 		$date = $instance['date'];
 		$time = $instance['time'];
+		$timezone = $instance['timezone'];
 		?>
 		
 		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>" /></label></p>
 		<p><label for="<?php echo $this->get_field_id('date'); ?>">Date: <input class="widefat" id="<?php echo $this->get_field_id('date'); ?>" name="<?php echo $this->get_field_name('date'); ?>" type="date" value="<?php echo attribute_escape($date); ?>" /></label></p>
 		<p><label for="<?php echo $this->get_field_id('time'); ?>">Time: <input class="widefat" id="<?php echo $this->get_field_id('time'); ?>" name="<?php echo $this->get_field_name('time'); ?>" type="time" value="<?php echo attribute_escape($time); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id('timezone'); ?>">Timezone:<br>
+		<select class="widefat" id="<?php echo $this->get_field_id('timezone'); ?>" name="<?php echo $this->get_field_name('timezone'); ?>">
+			<?php echo wp_timezone_choice($timezone); ?>
+		</select></p>
 		
 		<?php
 	}
@@ -38,6 +43,7 @@ class DoomClockWidget extends WP_Widget {
 		$instance['title'] = $new_instance['title'];
 		$instance['date'] = $new_instance['date'];
 		$instance['time'] = $new_instance['time'];
+		$instance['timezone'] = $new_instance['timezone'];
 		
 		return $instance;
 	}
@@ -47,6 +53,14 @@ class DoomClockWidget extends WP_Widget {
 		
 		$title = empty($instance['title']) ? ' ' : apply_filters('widget_title', $instance['title']);
 		$datetime = $instance['date'] . 'T' . $instance['time'] . ':00';
+		$timezone = $instance['timezone'];
+		
+		$time = new \DateTime('now', new DateTimeZone($timezone));
+		$timezone_offset = $time->format('P');
+		
+		echo '<pre>';
+		print_r($timezone_offset);
+		echo '</pre>';
 		
 		echo
 		$before_widget,
